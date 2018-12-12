@@ -1,6 +1,7 @@
 # notice
 ``` 
-This bliki is originated from https://github.com/axkr/info.bliki.wikipedia_parser( actually https://bitbucket.org/axelclk/info.bliki.wiki)
+This bliki is originated from https://github.com/axkr/info.bliki.wikipedia_parser
+(actually https://bitbucket.org/axelclk/info.bliki.wiki)
 ```
 
 
