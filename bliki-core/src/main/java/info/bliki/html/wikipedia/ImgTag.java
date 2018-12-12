@@ -13,7 +13,15 @@ public class ImgTag extends AbstractHTMLTag {
         Map<String, String> tagAtttributes = node.getAttributes();
         if (tagAtttributes != null) {
             String srcValue = tagAtttributes.get("src");
-            if (srcValue != null) {
+            if (srcValue != null)
+            {
+            
+               resultBuffer.append("!img_src:");
+               resultBuffer.append(srcValue);
+                    resultBuffer.append("!");
+            }
+            /* org
+            {
                 int index = srcValue.lastIndexOf('/');
                 if (index >= 0) {
                     srcValue = srcValue.substring(index + 1);
@@ -30,6 +38,7 @@ public class ImgTag extends AbstractHTMLTag {
                     resultBuffer.append("]]");
                 }
             }
+        */
         }
     }
 }

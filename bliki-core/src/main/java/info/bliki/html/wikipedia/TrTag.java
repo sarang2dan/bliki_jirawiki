@@ -5,9 +5,15 @@ import info.bliki.htmlcleaner.TagNode;
 
 public class TrTag extends ConvertEmptyHTMLTag {
 
+	/*
     @Override
     public void open(TagNode node, StringBuilder resultBuffer) {
         resultBuffer.append("\n|-");
     }
-
+	*/
+	
+    @Override
+    public void close(TagNode node, StringBuilder resultBuffer) {
+        resultBuffer.append("|\\n");
+    }
 }

@@ -40,8 +40,8 @@ public class ListTag extends AbstractHTMLTag {
                                         || subSubNode.getName().equals("ul")) {
                                         if (subBuffer.length() > 1) {
                                             subString = subBuffer.toString();
-                                            subString = subString.replaceAll(" \\n", " ");
-                                            subString = subString.replaceAll("\\n", " ");
+                                            //subString = subString.replaceAll(" \\n", " ");
+                                            //subString = subString.replaceAll("\\n", " ");
                                             list.add(listChar + subString);
                                             subBuffer = new StringBuilder(" ");
                                         }
@@ -69,8 +69,8 @@ public class ListTag extends AbstractHTMLTag {
 
                         if (subBuffer.length() > 1) {
                             subString = subBuffer.toString();
-                            subString = subString.replaceAll(" \\n", " ");
-                            subString = subString.replaceAll("\\n", " ");
+                            //subString = subString.replaceAll(" \\n", " ");
+                            //subString = subString.replaceAll("\\n", " ");
                             list.add(listChar + ' ' + subString.trim());
                             subBuffer = null;
                         }
@@ -87,10 +87,10 @@ public class ListTag extends AbstractHTMLTag {
         StringBuilder resultBuffer, boolean showWithoutTag) {
         List<String> listLines = getListLines(fListChar, w, node);
         if (listLines.size() > 0) {
-            resultBuffer.append("\n");
+            resultBuffer.append("\\n");
             for (int i = 0; i < listLines.size(); i++) {
                 resultBuffer.append(listLines.get(i).toString().trim());
-                resultBuffer.append("\n");
+                resultBuffer.append("\\n");
             }
         }
     }

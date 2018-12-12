@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 public class FontTag extends OpenCloseHTMLTag {
-    public FontTag(String opener, String closer) {
+    
+	private boolean hasColorAttr = false;
+    
+	public FontTag(String opener, String closer) {
         super(opener, closer);
     }
 
@@ -15,22 +18,35 @@ public class FontTag extends OpenCloseHTMLTag {
         resultBuffer.append(openStr);
 
         Map<String, String> tagAttributes = node.getAttributes();
-        boolean first = true;
         for (Map.Entry<String, String> currEntry : tagAttributes.entrySet()) {
-            if (first) {
-                resultBuffer.append(" ");
-                first = false;
-            }
             String attName = currEntry.getKey();
-            if (attName.length() >= 1 && Character.isLetter(attName.charAt(0))) {
+            if ( attName.equals("color") == true ) {
                 String attValue = currEntry.getValue();
-
-                resultBuffer.append(" " + attName + "=\"" + attValue + "\"");
+                attValue = attValue.replaceAll("\\\\\"", "");
+              
+                  
+                resultBuffer.insert(
+                		resultBuffer.length(), 
+                		"{color:" + attValue + "}" );
+                hasColorAttr = true;
             }
         }
-        resultBuffer.append(">");
     }
 
+    @Override
+    public void close(TagNode node, StringBuilder resultBuffer) {
+    	if( hasColorAttr == true )
+    	{
+    		//resultBuffer.append("{color}");
+    		resultBuffer.insert(
+            		resultBuffer.length(), 
+            		"{color}" );
+    	}
+    	
+//        resultBuffer.append(closeStr);
+    }
+    
+    /*
     @Override
     public void content(AbstractHTMLToWiki w, TagNode node,
         StringBuilder resultBuffer, boolean showWithoutTag) {
@@ -87,4 +103,5 @@ public class FontTag extends OpenCloseHTMLTag {
 
         }
     }
+    */
 }

@@ -11,7 +11,7 @@ import java.io.IOException;
  *
  */
 public class HTML2WikiConverter {
-    String fInputHTML;
+    public String fInputHTML;
 
     public HTML2WikiConverter() {
         this(null);
@@ -46,12 +46,13 @@ public class HTML2WikiConverter {
             StringBuilder tempBuffer = new StringBuilder(resultBuffer.length() + resultBuffer.length() / 10);
             while (indx > 0) {
                 indx += 4;
-                tempBuffer.append(resultBuffer.substring(lastIndx, indx));
+                tempBuffer.insert(tempBuffer.length(), 
+                		          resultBuffer.substring(lastIndx, indx));
                 if (indx < resultBuffer.length()) {
                     ch = resultBuffer.charAt(indx);
                     if (ch != '\n' && ch != '\r' && ch != ' ' && ch != '#' && ch != '=' && ch != '*' && ch != ':' && ch != ';' && ch != '{'
                             && ch != '|') {
-                        tempBuffer.append('\n');
+                        tempBuffer.append("\\n");
                     }
                     lastIndx = indx;
                     indx = resultBuffer.indexOf("<br>", lastIndx);
@@ -60,7 +61,8 @@ public class HTML2WikiConverter {
                 }
             }
             if (lastIndx < resultBuffer.length()) {
-                tempBuffer.append(resultBuffer.substring(lastIndx));
+                tempBuffer.insert(tempBuffer.length(), 
+                		          resultBuffer.substring(lastIndx));
             }
             return tempBuffer.toString();
         }

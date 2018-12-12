@@ -64,7 +64,7 @@ public class AbstractHTMLToWiki {
             String content = contentToken.getContent();
             content = content.replaceAll("&nbsp;", " ");
             // content = StringUtils.replace(content, "&nbsp;", " ");
-            wikiText.append(content);
+            wikiText.insert(wikiText.length(), content);
         } else if (node instanceof TagNode) {
             TagNode tagNode = (TagNode) node;
 
@@ -82,9 +82,9 @@ public class AbstractHTMLToWiki {
                 tag.content(this, tagNode, wikiText, showWithoutTag);
             } else {
                 if (name.equals("br")) {
-                    wikiText.append("<br>");
+                    wikiText.insert(wikiText.length(), "<br>");
                 } else if (name.equals("hr")) {
-                    wikiText.append("\n----\n");
+                    wikiText.insert(wikiText.length(), "\\n----\\n");
                 } else {
                     List<Object> children = tagNode.getChildren();
                     if (children.size() != 0) {

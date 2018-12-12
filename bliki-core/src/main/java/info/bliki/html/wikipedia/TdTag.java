@@ -7,7 +7,7 @@ public class TdTag extends ConvertEmptyHTMLTag {
 
     @Override
     public void open(TagNode node, StringBuilder resultBuffer) {
-        resultBuffer.append("\n|");
+        resultBuffer.append("|");
     }
 
 }
