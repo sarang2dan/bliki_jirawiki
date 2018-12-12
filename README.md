@@ -1,3 +1,9 @@
+# notice
+``` 
+This bliki is originated from https://github.com/axkr/info.bliki.wikipedia_parser( actually https://bitbucket.org/axelclk/info.bliki.wiki)
+```
+
+
 > The Java Wikipedia API (Bliki engine)
 > is a parser library for converting
 > Wikipedia wikitext notation to HTML.
